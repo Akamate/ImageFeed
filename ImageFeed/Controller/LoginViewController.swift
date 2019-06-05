@@ -21,9 +21,9 @@ class LoginViewController: UIViewController {
     
 
     @IBAction func LoginPressed(_ sender: Any) {
-        //if(userName.text == "" && password.text == ""){
+        if(userName.text == "T" && password.text == "T"){
             performSegue(withIdentifier: "gotoFeed", sender: self)
-        //}
+        }
     }
     
     

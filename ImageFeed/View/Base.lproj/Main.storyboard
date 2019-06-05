@@ -78,7 +78,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Welcome" id="cGu-u9-RAM"/>
+                    <navigationItem key="navigationItem" title="Welcome" id="cGu-u9-RAM">
+                        <barButtonItem key="backBarButtonItem" title="Logout" id="hUQ-sl-NHl"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="password" destination="LAT-Wu-lKu" id="MSJ-6t-Ner"/>
                         <outlet property="userName" destination="R7c-gd-M5P" id="qD3-zI-Ytz"/>
@@ -87,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="133.5832083958021"/>
+            <point key="canvasLocation" x="932" y="134"/>
         </scene>
         <!--MyFeed-->
         <scene sceneID="BtR-do-BWA">
@@ -141,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZTL-o7-agZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1844" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1703" y="134"/>
         </scene>
         <!--MyImage-->
         <scene sceneID="I5C-T2-1Gq">
@@ -151,27 +153,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d2c-9F-6AQ">
-                                <rect key="frame" x="0.0" y="114" width="375" height="503"/>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUN-jZ-lAn">
+                                <rect key="frame" x="0.0" y="84" width="375" height="563"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d2c-9F-6AQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="d2c-9F-6AQ" secondAttribute="bottom" id="6DU-EM-1di"/>
+                                    <constraint firstItem="d2c-9F-6AQ" firstAttribute="top" secondItem="hUN-jZ-lAn" secondAttribute="top" id="MRG-nX-LWL"/>
+                                    <constraint firstItem="d2c-9F-6AQ" firstAttribute="leading" secondItem="hUN-jZ-lAn" secondAttribute="leading" id="Nla-8G-38a"/>
+                                    <constraint firstAttribute="trailing" secondItem="d2c-9F-6AQ" secondAttribute="trailing" id="TVf-sR-PIA"/>
+                                    <constraint firstItem="d2c-9F-6AQ" firstAttribute="centerX" secondItem="hUN-jZ-lAn" secondAttribute="centerX" id="pPU-UK-qXH"/>
+                                    <constraint firstItem="d2c-9F-6AQ" firstAttribute="centerY" secondItem="hUN-jZ-lAn" secondAttribute="centerY" id="zfK-yv-kg5"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="d2c-9F-6AQ" firstAttribute="leading" secondItem="DXk-Ju-TOk" secondAttribute="leading" id="DQ7-Aw-f8H"/>
-                            <constraint firstItem="d2c-9F-6AQ" firstAttribute="trailing" secondItem="DXk-Ju-TOk" secondAttribute="trailing" id="JKv-eX-XGW"/>
-                            <constraint firstItem="DXk-Ju-TOk" firstAttribute="bottom" secondItem="d2c-9F-6AQ" secondAttribute="bottom" constant="50" id="WKo-on-dx8"/>
-                            <constraint firstItem="d2c-9F-6AQ" firstAttribute="top" secondItem="DXk-Ju-TOk" secondAttribute="top" constant="50" id="nNa-Wh-jNG"/>
+                            <constraint firstItem="hUN-jZ-lAn" firstAttribute="leading" secondItem="DXk-Ju-TOk" secondAttribute="leading" id="Qb7-Ly-F5X"/>
+                            <constraint firstItem="DXk-Ju-TOk" firstAttribute="bottom" secondItem="hUN-jZ-lAn" secondAttribute="bottom" constant="20" id="lu2-ke-mMG"/>
+                            <constraint firstItem="DXk-Ju-TOk" firstAttribute="trailing" secondItem="hUN-jZ-lAn" secondAttribute="trailing" id="sAl-ka-4dN"/>
+                            <constraint firstItem="hUN-jZ-lAn" firstAttribute="top" secondItem="DXk-Ju-TOk" secondAttribute="top" constant="20" id="xZ6-9x-lT5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DXk-Ju-TOk"/>
                     </view>
                     <navigationItem key="navigationItem" title="MyImage" id="d6o-Iv-0LQ"/>
                     <connections>
                         <outlet property="myImage" destination="d2c-9F-6AQ" id="zAB-Kf-5D3"/>
+                        <outlet property="scrollView" destination="hUN-jZ-lAn" id="FE8-WN-Y2W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yiZ-en-ZZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604" y="133.5832083958021"/>
+            <point key="canvasLocation" x="2524" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xbd-4y-wnC">

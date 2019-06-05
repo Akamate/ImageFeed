@@ -12,7 +12,7 @@ import RealmSwift
 class ImageFeedViewModel {
     let realm = try! Realm()
     var images : Results<ImageFeed>?
-    var numberofImages : Int {
+    var numberOfImages : Int {
         return images?.count ?? 0
     }
     func loadImage(){

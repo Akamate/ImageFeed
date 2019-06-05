@@ -9,9 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ImageFeedViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
-{
-    
+class ImageFeedViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     lazy var imageFeedVM : ImageFeedViewModel = {
         return ImageFeedViewModel()
     }()
@@ -32,8 +30,8 @@ class ImageFeedViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imageFeedVM.images?.count ?? 0
-    }
+        return imageFeedVM.numberOfImages
+    }    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = imageFeedTableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! FeedCell
@@ -58,19 +56,18 @@ class ImageFeedViewController: UIViewController,UITableViewDelegate,UITableViewD
         }
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
+         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, nil) in
             self.imageFeedVM.deleteImage(indexPath:indexPath)
             self.imageFeedTableView.reloadData()
         }
+        delete.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
         let swipeActionConfig = UISwipeActionsConfiguration(actions: [delete])
-        swipeActionConfig.performsFirstActionWithFullSwipe = false
-
         return swipeActionConfig
     }
     
     func scrollToBottom(){
-            if(imageFeedVM.numberofImages>0){
-                self.imageFeedTableView.scrollToRow(at: IndexPath(row: imageFeedVM.numberofImages-1, section: 0), at: .bottom, animated: false)
+            if(imageFeedVM.numberOfImages>0){
+                self.imageFeedTableView.scrollToRow(at: IndexPath(row: imageFeedVM.numberOfImages-1, section: 0), at: .bottom, animated: false)
         }
     }
 }
@@ -81,6 +78,8 @@ extension ImageFeedViewController : UINavigationControllerDelegate, UIImagePicke
     @IBAction func takePhoto(_ sender: Any) {
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = true
+        imagePicker.showsCameraControls = true
         present(imagePicker, animated: true, completion: nil)
     }
     //Get image info
