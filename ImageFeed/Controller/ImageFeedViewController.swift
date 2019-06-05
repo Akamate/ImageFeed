@@ -42,10 +42,20 @@ class ImageFeedViewController: UIViewController,UINavigationControllerDelegate, 
                 cell.myImage.image = UIImage(data: photo as Data)
             }
         }
+        scrollToBottom()
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "gotoImage", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ImageViewController
+        if let indexPath = imageFeedTableView.indexPathForSelectedRow {
+            if let photo = images?[indexPath.row].myImage {
+                destinationVC.newImage = UIImage(data: photo as Data)
+            }
+        }
     }
     //Take photo button
     @IBAction func takePhoto(_ sender: Any) {
@@ -64,7 +74,7 @@ class ImageFeedViewController: UIViewController,UINavigationControllerDelegate, 
         
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
+        formatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
         let result = formatter.string(from: date)
        
         let imageFeed = ImageFeed()
@@ -80,6 +90,8 @@ class ImageFeedViewController: UIViewController,UINavigationControllerDelegate, 
     func loadImage(){
         images = realm.objects(ImageFeed.self)
         self.imageFeedTableView.reloadData()
+        
+        scrollToBottom()
     }
 
     func saveImageFeed(imageFeed : ImageFeed){
@@ -93,6 +105,13 @@ class ImageFeedViewController: UIViewController,UINavigationControllerDelegate, 
             print("Failed Saving Data \(error)")
         }
         self.imageFeedTableView.reloadData()
+    }
+    func scrollToBottom(){
+        if let numofImage = images?.count {
+            if(numofImage>0){
+                self.imageFeedTableView.scrollToRow(at: IndexPath(row: numofImage-1, section: 0), at: .bottom, animated: false)
+            }
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fPN-6X-hgt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R7c-gd-M5P">
-                                <rect key="frame" x="169" y="155" width="120" height="30"/>
+                                <rect key="frame" x="169" y="199" width="120" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="Bus-Y4-g9R"/>
                                 </constraints>
@@ -28,13 +28,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USERNAME" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8v-sO-TV9">
-                                <rect key="frame" x="60" y="158" width="92" height="23.5"/>
+                                <rect key="frame" x="60" y="202" width="92" height="23.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgg-ma-al2">
-                                <rect key="frame" x="60" y="254" width="93" height="21"/>
+                                <rect key="frame" x="60" y="298" width="93" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LAT-Wu-lKu">
-                                <rect key="frame" x="169" y="249.5" width="120" height="30"/>
+                                <rect key="frame" x="169" y="293.5" width="120" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="r07-eP-e2u"/>
                                 </constraints>
@@ -74,6 +74,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cGu-u9-RAM"/>
                     <connections>
                         <outlet property="password" destination="LAT-Wu-lKu" id="MSJ-6t-Ner"/>
                         <outlet property="userName" destination="R7c-gd-M5P" id="qD3-zI-Ytz"/>
@@ -82,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="146" y="134"/>
+            <point key="canvasLocation" x="1084" y="133.5832083958021"/>
         </scene>
         <!--Image Feed View Controller-->
         <scene sceneID="BtR-do-BWA">
@@ -102,7 +103,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HQW-Bm-eDB">
-                                <rect key="frame" x="0.0" y="20" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="yx7-1A-dAY">
@@ -130,11 +131,59 @@
                     </view>
                     <connections>
                         <outlet property="imageFeedTableView" destination="HQW-Bm-eDB" id="U8D-9P-tUH"/>
+                        <segue destination="bLW-Kx-WRU" kind="show" identifier="gotoImage" id="b4N-dk-vAZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZTL-o7-agZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880.79999999999995" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1844" y="133.5832083958021"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="I5C-T2-1Gq">
+            <objects>
+                <viewController id="bLW-Kx-WRU" customClass="ImageViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="chq-il-dyT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d2c-9F-6AQ">
+                                <rect key="frame" x="0.0" y="114" width="375" height="503"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="d2c-9F-6AQ" firstAttribute="leading" secondItem="DXk-Ju-TOk" secondAttribute="leading" id="DQ7-Aw-f8H"/>
+                            <constraint firstItem="d2c-9F-6AQ" firstAttribute="trailing" secondItem="DXk-Ju-TOk" secondAttribute="trailing" id="JKv-eX-XGW"/>
+                            <constraint firstItem="DXk-Ju-TOk" firstAttribute="bottom" secondItem="d2c-9F-6AQ" secondAttribute="bottom" constant="50" id="WKo-on-dx8"/>
+                            <constraint firstItem="d2c-9F-6AQ" firstAttribute="top" secondItem="DXk-Ju-TOk" secondAttribute="top" constant="50" id="nNa-Wh-jNG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DXk-Ju-TOk"/>
+                    </view>
+                    <connections>
+                        <outlet property="myImage" destination="d2c-9F-6AQ" id="zAB-Kf-5D3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yiZ-en-ZZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2604" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Xbd-4y-wnC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fPN-6X-hgt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mQf-p6-njk">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9Uh-6j-Kb1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="25n-bI-acB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="144.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
