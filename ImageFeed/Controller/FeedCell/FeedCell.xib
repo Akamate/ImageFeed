@@ -46,6 +46,7 @@
             <connections>
                 <outlet property="date" destination="hlg-J2-PEx" id="v5y-Ch-gfx"/>
                 <outlet property="myImage" destination="YcX-Mw-dY6" id="acS-un-GfC"/>
+                <outlet property="view" destination="H2p-sc-9uM" id="Ko8-qH-fNk"/>
             </connections>
             <point key="canvasLocation" x="128" y="212.74362818590706"/>
         </tableViewCell>

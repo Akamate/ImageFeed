@@ -11,6 +11,7 @@ import UIKit
 class FeedCell: UITableViewCell {
 
 
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var date: UILabel!
     override func awakeFromNib() {
@@ -27,7 +28,8 @@ class FeedCell: UITableViewCell {
     func setImage(){
         let screenSize = UIScreen.main.bounds
         myImage.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        //myImage.heightAnchor.constraint(equalToConstant: screenSize.height/2).isActive = true
+        let margin = view.layoutMarginsGuide
+        date.topAnchor.constraint(equalTo: margin.topAnchor, constant: screenSize.height/2).isActive = true
     }
     
 }

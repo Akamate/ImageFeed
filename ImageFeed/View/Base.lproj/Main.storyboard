@@ -40,10 +40,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMC-cd-jWN">
-                                <rect key="frame" x="137.5" y="388.5" width="100" height="50"/>
+                                <rect key="frame" x="147.5" y="388.5" width="80" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="5zG-d2-U0O"/>
+                                    <constraint firstAttribute="width" constant="80" id="5zG-d2-U0O"/>
                                     <constraint firstAttribute="height" constant="50" id="FIe-cF-XnN"/>
                                 </constraints>
                                 <state key="normal" title="Login">
