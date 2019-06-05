@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Welcome-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,9 +40,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMC-cd-jWN">
-                                <rect key="frame" x="164.5" y="368.5" width="46" height="30"/>
+                                <rect key="frame" x="137.5" y="388.5" width="100" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <state key="normal" title="Button">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="5zG-d2-U0O"/>
+                                    <constraint firstAttribute="height" constant="50" id="FIe-cF-XnN"/>
+                                </constraints>
+                                <state key="normal" title="Login">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -65,7 +69,7 @@
                             <constraint firstItem="eMC-cd-jWN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="887-uQ-25k"/>
                             <constraint firstItem="zgg-ma-al2" firstAttribute="centerY" secondItem="LAT-Wu-lKu" secondAttribute="centerY" id="CyO-Lt-elG"/>
                             <constraint firstItem="LAT-Wu-lKu" firstAttribute="leading" secondItem="zgg-ma-al2" secondAttribute="trailing" constant="16" id="FCl-eg-jQN"/>
-                            <constraint firstItem="eMC-cd-jWN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="50" id="GQc-24-A1W"/>
+                            <constraint firstItem="eMC-cd-jWN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="80" id="GQc-24-A1W"/>
                             <constraint firstItem="K8v-sO-TV9" firstAttribute="centerY" secondItem="R7c-gd-M5P" secondAttribute="centerY" id="cLb-8r-bDy"/>
                             <constraint firstItem="K8v-sO-TV9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="mrQ-1i-hGA"/>
                             <constraint firstItem="zgg-ma-al2" firstAttribute="top" secondItem="K8v-sO-TV9" secondAttribute="bottom" constant="72.5" id="mxR-T9-d44"/>
@@ -74,7 +78,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cGu-u9-RAM"/>
+                    <navigationItem key="navigationItem" title="Welcome" id="cGu-u9-RAM"/>
                     <connections>
                         <outlet property="password" destination="LAT-Wu-lKu" id="MSJ-6t-Ner"/>
                         <outlet property="userName" destination="R7c-gd-M5P" id="qD3-zI-Ytz"/>
@@ -85,7 +89,7 @@
             </objects>
             <point key="canvasLocation" x="1084" y="133.5832083958021"/>
         </scene>
-        <!--Image Feed View Controller-->
+        <!--MyFeed-->
         <scene sceneID="BtR-do-BWA">
             <objects>
                 <viewController id="Ql5-e8-DtT" customClass="ImageFeedViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
@@ -129,6 +133,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kf0-cT-dsR"/>
                     </view>
+                    <navigationItem key="navigationItem" title="MyFeed" id="OZb-FE-DnE"/>
                     <connections>
                         <outlet property="imageFeedTableView" destination="HQW-Bm-eDB" id="U8D-9P-tUH"/>
                         <segue destination="bLW-Kx-WRU" kind="show" identifier="gotoImage" id="b4N-dk-vAZ"/>
@@ -138,7 +143,7 @@
             </objects>
             <point key="canvasLocation" x="1844" y="133.5832083958021"/>
         </scene>
-        <!--Image View Controller-->
+        <!--MyImage-->
         <scene sceneID="I5C-T2-1Gq">
             <objects>
                 <viewController id="bLW-Kx-WRU" customClass="ImageViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
@@ -159,6 +164,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DXk-Ju-TOk"/>
                     </view>
+                    <navigationItem key="navigationItem" title="MyImage" id="d6o-Iv-0LQ"/>
                     <connections>
                         <outlet property="myImage" destination="d2c-9F-6AQ" id="zAB-Kf-5D3"/>
                     </connections>

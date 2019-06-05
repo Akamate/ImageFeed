@@ -36,16 +36,16 @@
                 <constraints>
                     <constraint firstItem="YcX-Mw-dY6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="7zl-R3-7Vi"/>
                     <constraint firstAttribute="bottom" secondItem="YcX-Mw-dY6" secondAttribute="bottom" constant="10" id="Doy-4b-lcl"/>
-                    <constraint firstItem="hlg-J2-PEx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Mex-Wb-Kah"/>
                     <constraint firstItem="YcX-Mw-dY6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="RQy-XN-muf"/>
+                    <constraint firstItem="hlg-J2-PEx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="TcU-n6-Tuc"/>
                     <constraint firstItem="hlg-J2-PEx" firstAttribute="leading" secondItem="YcX-Mw-dY6" secondAttribute="trailing" constant="20" id="l9b-gq-aw0"/>
-                    <constraint firstAttribute="bottom" secondItem="hlg-J2-PEx" secondAttribute="bottom" constant="10" id="tme-tB-ME1"/>
+                    <constraint firstAttribute="bottom" secondItem="hlg-J2-PEx" secondAttribute="bottom" constant="10" id="xej-wu-bye"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="date" destination="hlg-J2-PEx" id="9lN-Kg-QTh"/>
-                <outlet property="myImage" destination="YcX-Mw-dY6" id="YUz-If-URk"/>
+                <outlet property="date" destination="hlg-J2-PEx" id="v5y-Ch-gfx"/>
+                <outlet property="myImage" destination="YcX-Mw-dY6" id="acS-un-GfC"/>
             </connections>
             <point key="canvasLocation" x="128" y="212.74362818590706"/>
         </tableViewCell>

@@ -22,6 +22,7 @@ class ImageFeedViewController: UIViewController,UINavigationControllerDelegate, 
         imageFeedTableView.dataSource = self
         configureTableView()
         loadImage()
+       // scrollToBottom()
         // Do any additional setup after loading the view.
     }
     //Config TableView
@@ -42,7 +43,6 @@ class ImageFeedViewController: UIViewController,UINavigationControllerDelegate, 
                 cell.myImage.image = UIImage(data: photo as Data)
             }
         }
-        scrollToBottom()
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -56,6 +56,16 @@ class ImageFeedViewController: UIViewController,UINavigationControllerDelegate, 
                 destinationVC.newImage = UIImage(data: photo as Data)
             }
         }
+    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
+            self.deleteImage(indexPath:indexPath)
+            self.imageFeedTableView.reloadData()
+        }
+        let swipeActionConfig = UISwipeActionsConfiguration(actions: [delete])
+        swipeActionConfig.performsFirstActionWithFullSwipe = false
+
+        return swipeActionConfig
     }
     //Take photo button
     @IBAction func takePhoto(_ sender: Any) {
@@ -85,15 +95,16 @@ class ImageFeedViewController: UIViewController,UINavigationControllerDelegate, 
 
         saveImageFeed(imageFeed: imageFeed)
         self.imageFeedTableView.reloadData()
+        scrollToBottom()
     }
-    
+    //loadImage
     func loadImage(){
         images = realm.objects(ImageFeed.self)
         self.imageFeedTableView.reloadData()
         
-        scrollToBottom()
+        
     }
-
+    //saveImage
     func saveImageFeed(imageFeed : ImageFeed){
         do{
             try realm.write {
@@ -105,6 +116,18 @@ class ImageFeedViewController: UIViewController,UINavigationControllerDelegate, 
             print("Failed Saving Data \(error)")
         }
         self.imageFeedTableView.reloadData()
+    }
+    func deleteImage(indexPath : IndexPath){
+        if let myImage = images?[indexPath.row]{
+            do{
+                try realm.write {
+                    realm.delete(myImage)
+                }
+            }
+            catch {
+                print(error)
+            }
+        }
     }
     func scrollToBottom(){
         if let numofImage = images?.count {
