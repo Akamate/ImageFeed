@@ -7,19 +7,22 @@
 //
 
 import UIKit
-import RealmSwift
-
 class ImageFeedViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     lazy var imageFeedVM : ImageFeedViewModel = {
         return ImageFeedViewModel()
     }()
     
+    let nameOfView : String = "MyFeed"
     let imagePicker = UIImagePickerController()
     @IBOutlet var imageFeedTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         imageFeedVM.loadImage()
+       // setNavigationItem()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        setNavigationItem()
     }
     //Config TableView
     func configureTableView(){
@@ -28,7 +31,14 @@ class ImageFeedViewController: UIViewController,UITableViewDelegate,UITableViewD
         imageFeedTableView.register(UINib(nibName: "FeedCell", bundle: nil), forCellReuseIdentifier: "feedCell")
         imageFeedTableView.rowHeight = 190
     }
-
+    func setNavigationItem(){
+        self.tabBarController?.navigationItem.title = nameOfView
+        self.tabBarController?.navigationItem.hidesBackButton = true
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutPressed))
+    }
+    @objc func logoutPressed(){
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return imageFeedVM.numberOfImages
     }    
