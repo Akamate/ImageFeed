@@ -8,30 +8,44 @@
 
 import Foundation
 import RealmSwift
-
+import KeychainAccess
 class AccountViewModel {
-    let realm = try! Realm()
-    var accounts : Results<Account>?
+//    let realm = try! Realm()
+//    var accounts : Results<Account>?
     var loggedUsername : String = ""
     var loggedPassword : String = ""
     func saveAccount(userName : String, password : String){
-        let account = Account()
-        account.userName = userName
-        account.password = password
         do {
-            try realm.write {
-                realm.add(account)
-            }
+            try Keychain().set(password, key: userName)
         }
         catch{
             print(error)
         }
-        
+
     }
-    func fetchAccount(){
-        accounts = realm.objects(Account.self)
+    func checkLoginComplete(userName : String, password : String)->Bool{
+        do{
+            let pass = try Keychain().get(userName)
+            if(pass == password){
+                return true
+            }
+            else{
+                return false
+            }
+        }
+        catch{
+            print(error)
+            return false
+        }
     }
-    func checkLoginComplete(userName : String, password : String){
-        
+    func getPassword(userName : String)->String {
+        do{
+            let pass = try Keychain().get(userName)
+            return pass!
+        }
+        catch{
+            print(error)
+            return "not found"
+        }
     }
 }

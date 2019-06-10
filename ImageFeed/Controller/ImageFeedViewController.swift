@@ -26,18 +26,25 @@ class ImageFeedViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     //Config TableView
     func configureTableView(){
+        imageFeedTableView.separatorStyle = .none
         imageFeedTableView.delegate = self
         imageFeedTableView.dataSource = self
         imageFeedTableView.register(UINib(nibName: "FeedCell", bundle: nil), forCellReuseIdentifier: "feedCell")
-        imageFeedTableView.rowHeight = 190
+        imageFeedTableView.rowHeight = 190.0
     }
     func setNavigationItem(){
         self.tabBarController?.navigationItem.title = nameOfView
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutPressed))
+      //  self.tabBarController?.navigationItem.leftBarButtonItem = editButtonItem
+       // self.tabBarController?.navigationItem.leftBarButtonItem?.action = #selector(editButtonPressed)
     }
     @objc func logoutPressed(){
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    @objc func editButtonPressed(){
+        self.tabBarController?.navigationItem.leftBarButtonItem?.title =  imageFeedTableView.isEditing ? "Edit" : "Done"
+        imageFeedTableView.isEditing = !imageFeedTableView.isEditing
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return imageFeedVM.numberOfImages
@@ -57,6 +64,9 @@ class ImageFeedViewController: UIViewController,UITableViewDelegate,UITableViewD
         performSegue(withIdentifier: "gotoImage", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! ImageViewController
         if let indexPath = imageFeedTableView.indexPathForSelectedRow {
@@ -74,7 +84,9 @@ class ImageFeedViewController: UIViewController,UITableViewDelegate,UITableViewD
         let swipeActionConfig = UISwipeActionsConfiguration(actions: [delete])
         return swipeActionConfig
     }
-    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("source: \(sourceIndexPath) dest : \(destinationIndexPath)")
+    }
     func scrollToBottom(){
             if(imageFeedVM.numberOfImages>0){
                 self.imageFeedTableView.scrollToRow(at: IndexPath(row: imageFeedVM.numberOfImages-1, section: 0), at: .bottom, animated: false)
@@ -88,7 +100,7 @@ extension ImageFeedViewController : UINavigationControllerDelegate, UIImagePicke
     @IBAction func takePhoto(_ sender: Any) {
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         imagePicker.showsCameraControls = true
         present(imagePicker, animated: true, completion: nil)
     }

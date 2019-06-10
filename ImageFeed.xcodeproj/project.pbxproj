@@ -14,6 +14,8 @@
 		6120D2AA22AA618100B60E66 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6120D2A922AA618100B60E66 /* AccountViewController.swift */; };
 		6120D2AC22AA656A00B60E66 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6120D2AB22AA656A00B60E66 /* Account.swift */; };
 		6120D2B022AA69C200B60E66 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6120D2AF22AA69C200B60E66 /* AccountViewModel.swift */; };
+		6120D2B422AE1EC400B60E66 /* ImageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6120D2B322AE1EC400B60E66 /* ImageList.swift */; };
+		6120D2B622AE42D800B60E66 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6120D2B522AE42D800B60E66 /* EditViewController.swift */; };
 		6139D4C422A629F3009B51D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6139D4C322A629F3009B51D4 /* AppDelegate.swift */; };
 		6139D4C622A629F3009B51D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6139D4C522A629F3009B51D4 /* LoginViewController.swift */; };
 		6139D4C922A629F3009B51D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6139D4C722A629F3009B51D4 /* Main.storyboard */; };
@@ -31,6 +33,8 @@
 		6120D2A922AA618100B60E66 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		6120D2AB22AA656A00B60E66 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		6120D2AF22AA69C200B60E66 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		6120D2B322AE1EC400B60E66 /* ImageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageList.swift; sourceTree = "<group>"; };
+		6120D2B522AE42D800B60E66 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		6139D4C022A629F3009B51D4 /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6139D4C322A629F3009B51D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6139D4C522A629F3009B51D4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 			children = (
 				617B335B22A68BB800DD4143 /* ImageFeed.swift */,
 				6120D2AB22AA656A00B60E66 /* Account.swift */,
+				6120D2B322AE1EC400B60E66 /* ImageList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 			children = (
 				6114FF0222A650D8007443C0 /* FeedCell */,
 				611AA29722A63806000554D9 /* ImageFeedViewController.swift */,
+				6120D2B522AE42D800B60E66 /* EditViewController.swift */,
 				6139D4C522A629F3009B51D4 /* LoginViewController.swift */,
 				61AA2DB322A76DCD003F6CFA /* ImageViewController.swift */,
 				6120D2A922AA618100B60E66 /* AccountViewController.swift */,
@@ -256,6 +262,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ImageFeed/Pods-ImageFeed-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
@@ -263,6 +271,8 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
@@ -282,9 +292,11 @@
 				611AA29822A63806000554D9 /* ImageFeedViewController.swift in Sources */,
 				6120D2AA22AA618100B60E66 /* AccountViewController.swift in Sources */,
 				6114FF0022A650CC007443C0 /* FeedCell.swift in Sources */,
+				6120D2B422AE1EC400B60E66 /* ImageList.swift in Sources */,
 				6139D4C622A629F3009B51D4 /* LoginViewController.swift in Sources */,
 				6120D2AC22AA656A00B60E66 /* Account.swift in Sources */,
 				6120D2B022AA69C200B60E66 /* AccountViewModel.swift in Sources */,
+				6120D2B622AE42D800B60E66 /* EditViewController.swift in Sources */,
 				61AA2DB722A79DAE003F6CFA /* ImageFeedViewModel.swift in Sources */,
 				61AA2DB422A76DCD003F6CFA /* ImageViewController.swift in Sources */,
 				6139D4C422A629F3009B51D4 /* AppDelegate.swift in Sources */,

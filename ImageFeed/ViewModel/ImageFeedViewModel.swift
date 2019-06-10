@@ -12,6 +12,7 @@ import RealmSwift
 class ImageFeedViewModel {
     let realm = try! Realm()
     var images : Results<ImageFeed>?
+    var imageList =  ImageList()
     var numberOfImages : Int {
         return images?.count ?? 0
     }
@@ -25,7 +26,6 @@ class ImageFeedViewModel {
         if let image = myImage.jpegData(compressionQuality: 0.7){
             imageFeed.myImage = image as NSData
         }
-        
         do{
             try realm.write {
                 realm.add(imageFeed)
