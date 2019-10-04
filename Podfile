@@ -7,4 +7,6 @@ target 'ImageFeed' do
 
   # Pods for ImageFeed
   pod 'RealmSwift'
+  pod 'KeychainAccess'
+  pod 'DropDown','2.3.4'
 end

@@ -1,4 +1,6 @@
 PODS:
+  - DropDown (2.3.4)
+  - KeychainAccess (3.2.0)
   - Realm (3.16.1):
     - Realm/Headers (= 3.16.1)
   - Realm/Headers (3.16.1)
@@ -6,17 +8,23 @@ PODS:
     - Realm (= 3.16.1)
 
 DEPENDENCIES:
+  - DropDown (= 2.3.4)
+  - KeychainAccess
   - RealmSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - DropDown
+    - KeychainAccess
     - Realm
     - RealmSwift
 
 SPEC CHECKSUMS:
+  DropDown: f225ff0fd09dde064d17aa03db7e4d4e4ff40b6b
+  KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   Realm: 601cacc51d8be3b17a377ef787be0f6ee0e76cf1
   RealmSwift: 486f2e09d5a8ccff63ed66e48d0846b111deb5e5
 
-PODFILE CHECKSUM: 1d87a98889b5a313b3b2bcb2cbc66b9d0d1d1df3
+PODFILE CHECKSUM: 212dce7cd7576cb021a363df3520f8b371c30a3b
 
 COCOAPODS: 1.5.3
