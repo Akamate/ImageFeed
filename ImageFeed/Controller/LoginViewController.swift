@@ -9,17 +9,19 @@
 import UIKit
 import LocalAuthentication
 
-struct LoggedUser{
+struct LoggedUser {
     static var loggedUserName = ""
 }
+
 class LoginViewController: UIViewController {
-    
     lazy var accountVM : AccountViewModel = {
         return AccountViewModel()
     }()
-    @IBOutlet var welcomeView: UIView!
-    @IBOutlet var userName: UITextField!
-    @IBOutlet var password: UITextField!
+    
+    @IBOutlet private var welcomeView: UIView!
+    @IBOutlet private var userName: UITextField!
+    @IBOutlet private var password: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -29,23 +31,24 @@ class LoginViewController: UIViewController {
         print("password \(accountVM.getPassword(userName: "T"))")
     }
     
-    @objc func viewTapped(){
+    @objc private func viewTapped() {
         userName.endEditing(true)
         password.endEditing(true)
     }
-    @IBAction func LoginPressed(_ sender: Any) {
-        if(accountVM.checkLoginComplete(userName: userName.text!, password: password.text!)){
+    
+    @IBAction private func LoginPressed(_ sender: Any) {
+        guard let userName = userName.text, let password = password.text else { return }
+        if accountVM.checkLoginComplete(userName: userName, password: password) {
             performSegue(withIdentifier: "gotoFeed", sender: self)
             LoggedUser.loggedUserName = userName.text!
             userName.text = ""
             password.text = ""
-        }
-        else {
+        } else {
             authenticateUser()
         }
     }
     
-    func authenticateUser() {
+    private func authenticateUser() {
         let context = LAContext()
         var error: NSError?
         
