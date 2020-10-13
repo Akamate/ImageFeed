@@ -12,12 +12,14 @@ class AccountViewController: UIViewController {
     lazy var accountVM : AccountViewModel = {
         return AccountViewModel()
     }()
-    @IBOutlet weak var myView: UIView!
-    @IBOutlet weak var oldPassword: UITextField!
-    @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var newPassword: UITextField!
-    @IBOutlet weak var confirmPassword: UITextField!
-    var textFieldColor : CGColor?
+    
+    @IBOutlet private weak var myView: UIView!
+    @IBOutlet private weak var oldPassword: UITextField!
+    @IBOutlet private weak var userName: UILabel!
+    @IBOutlet private weak var newPassword: UITextField!
+    @IBOutlet private weak var confirmPassword: UITextField!
+    
+    private var textFieldColor: CGColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,7 @@ class AccountViewController: UIViewController {
         myView.addGestureRecognizer(tabGesture)
         textFieldColor = oldPassword.layer.borderColor
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
         self.tabBarController?.navigationItem.title = "Change Password"
@@ -33,34 +36,33 @@ class AccountViewController: UIViewController {
         print(LoggedUser.loggedUserName)
     }
     
-    @objc func viewTapped(){
+    @objc private func viewTapped() {
         oldPassword.endEditing(true)
         newPassword.endEditing(true)
         confirmPassword.endEditing(true)
     }
-    @IBAction func confirmPressed(_ sender: Any) {
-        if(oldPassword.text != "" && newPassword.text != "" && confirmPassword.text != ""){
-            if(oldPassword.text == accountVM.getPassword(userName: userName.text!)){
-                if(newPassword.text == confirmPassword.text){
-                    accountVM.saveAccount(userName: userName.text!, password: newPassword.text!)
-                    showAlert(message : "Change Password Successfully")
-                    self.tabBarController?.selectedIndex = 0
-                }
-            }
-            else {
-                showAlert(message: "Wrong Password")
-                oldPassword.layer.borderColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
-                oldPassword.layer.borderWidth = 1.0
-                shakeTextField()
-            }
+    
+    @IBAction private func confirmPressed(_ sender: Any) {
+        guard let oldPassword = oldPassword.text, let newPassword = newPassword.text, let confirmPassword = confirmPassword.text, let userName = userName.text else { return }
+        if oldPassword == accountVM.getPassword(userName: userName) && newPassword == confirmPassword {
+            accountVM.saveAccount(userName: userName, password: newPassword)
+            showAlert(title : "Change Password Successfully")
+            tabBarController?.selectedIndex = 0
+        } else {
+            showAlert(title: "Wrong Password")
+            oldPassword.layer.borderColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+            oldPassword.layer.borderWidth = 1.0
+            shakeTextField()
         }
     }
-    func showAlert(message : String){
-        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+    
+    private func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert,animated: true)
+        present(alert, animated: true)
     }
-    func shakeTextField(){
+    
+    private func shakeTextField() {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.07
         animation.repeatCount = 4
