@@ -8,19 +8,29 @@
 
 import UIKit
 
-class ImageViewController: UIViewController,UIScrollViewDelegate{
-
-    @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var myImage: UIImageView!
-    var newImage : UIImage!
+class ImageViewController: UIViewController {
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var myImage: UIImageView!
+    
+    private var newImage: UIImage!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         myImage.image = newImage
         configureScrollView()
     }
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return myImage
+    
+    private func configureScrollView() {
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 0.1
+        scrollView.maximumZoomScale = 10.0
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.bouncesZoom = true
     }
+}
+
+extension ImageViewController: UIScrollViewDelegate {
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         if myImage.frame.height <= scrollView.frame.height {
             let shiftHeight = scrollView.frame.height/2.0 - scrollView.contentSize.height/2.0
@@ -35,14 +45,8 @@ class ImageViewController: UIViewController,UIScrollViewDelegate{
         print("bound width:\(scrollView.bounds.width) bound:\(scrollView.bounds.height)")
         print("width \(myImage.frame.height)")
     }
-
-    func configureScrollView(){
-        scrollView.delegate = self
-        scrollView.minimumZoomScale = 0.1
-        scrollView.maximumZoomScale = 10.0
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.bouncesZoom = true
-        
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return myImage
     }
 }
