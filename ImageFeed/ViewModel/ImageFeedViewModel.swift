@@ -9,47 +9,49 @@
 import Foundation
 import RealmSwift
 
-class ImageFeedViewModel {
-    let realm = try! Realm()
-    var images : Results<ImageFeed>?
-    var imageList =  ImageList()
-    var numberOfImages : Int {
+final class ImageFeedViewModel {
+    private let realm = try! Realm()
+    
+    var images: Results<ImageFeed>?
+    var imageList = ImageList()
+    var numberOfImages: Int {
         return images?.count ?? 0
     }
+    
     func loadImage(){
          images = realm.objects(ImageFeed.self)
     }
-    //saveImage
+    
     func saveImageFeed(myImage : UIImage){
         let imageFeed = ImageFeed()
-        imageFeed.date =  calculateDate()
-        if let image = myImage.jpegData(compressionQuality: 0.7){
+        imageFeed.date = calculateDate()
+        
+        if let image = myImage.jpegData(compressionQuality: 0.7) {
             imageFeed.myImage = image as NSData
         }
-        do{
+        
+        do {
             try realm.write {
                 realm.add(imageFeed)
             }
-            
-        }
-        catch{
+        } catch {
             print("Failed Saving Data \(error)")
         }
     }
     
     func deleteImage(indexPath : IndexPath){
         if let myImage = images?[indexPath.row]{
-            do{
+            do {
                 try realm.write {
                     realm.delete(myImage)
                 }
-            }
-            catch {
+            } catch {
                 print(error)
             }
         }
     }
-    func calculateDate()->String{
+    
+    func calculateDate() -> String {
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy HH:mm:ss"

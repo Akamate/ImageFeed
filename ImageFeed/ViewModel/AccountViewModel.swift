@@ -9,22 +9,21 @@
 import Foundation
 import RealmSwift
 import KeychainAccess
-class AccountViewModel {
-//    let realm = try! Realm()
-//    var accounts : Results<Account>?
-    var loggedUsername : String = ""
-    var loggedPassword : String = ""
-    func saveAccount(userName : String, password : String){
+
+final class AccountViewModel {
+    private var loggedUsername : String = ""
+    private var loggedPassword : String = ""
+    
+    func saveAccount(userName: String, password: String) {
         do {
             try Keychain().set(password, key: userName)
-        }
-        catch{
+        } catch {
             print(error)
         }
-
     }
-    func checkLoginComplete(userName : String, password : String)->Bool{
-        do{
+    
+    func checkLoginComplete(userName: String, password: String) -> Bool{
+        do {
             let pass = try Keychain().get(userName)
             if(pass == password){
                 return true
@@ -32,18 +31,17 @@ class AccountViewModel {
             else{
                 return false
             }
-        }
-        catch{
+        } catch {
             print(error)
             return false
         }
     }
-    func getPassword(userName : String)->String {
-        do{
+    
+    func getPassword(userName : String) -> String {
+        do {
             let pass = try Keychain().get(userName)
             return pass!
-        }
-        catch{
+        } catch {
             print(error)
             return "not found"
         }
