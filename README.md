@@ -1,1 +1,3 @@
 # ImageFeed
+
+Practice Project
