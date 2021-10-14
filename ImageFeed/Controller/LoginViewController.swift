@@ -37,10 +37,10 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction private func LoginPressed(_ sender: Any) {
-        guard let userName = userName.text, let password = password.text else { return }
-        if accountVM.checkLoginComplete(userName: userName, password: password) {
+        guard let userNameText = userName.text, let passwordText = password.text else { return }
+        if accountVM.checkLoginComplete(userName: userNameText, password: passwordText) {
             performSegue(withIdentifier: "gotoFeed", sender: self)
-            LoggedUser.loggedUserName = userName.text!
+            LoggedUser.loggedUserName = userNameText
             userName.text = ""
             password.text = ""
         } else {
