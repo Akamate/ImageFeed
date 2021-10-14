@@ -43,8 +43,8 @@ class AccountViewController: UIViewController {
     }
     
     @IBAction private func confirmPressed(_ sender: Any) {
-        guard let oldPassword = oldPassword.text, let newPassword = newPassword.text, let confirmPassword = confirmPassword.text, let userName = userName.text else { return }
-        if oldPassword == accountVM.getPassword(userName: userName) && newPassword == confirmPassword {
+        guard let oldPasswordText = oldPassword.text, let newPassword = newPassword.text, let confirmPassword = confirmPassword.text, let userName = userName.text else { return }
+        if oldPasswordText == accountVM.getPassword(userName: userName) && newPassword == confirmPassword {
             accountVM.saveAccount(userName: userName, password: newPassword)
             showAlert(title : "Change Password Successfully")
             tabBarController?.selectedIndex = 0

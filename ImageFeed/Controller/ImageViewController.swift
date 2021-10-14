@@ -12,7 +12,7 @@ class ImageViewController: UIViewController {
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var myImage: UIImageView!
     
-    private var newImage: UIImage!
+    public var newImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
